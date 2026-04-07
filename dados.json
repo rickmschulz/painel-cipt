@@ -1,0 +1,25 @@
+{
+  "mes_referencia": "ABRIL/25",
+  "_comment": "atrasado, no_prazo, adiantado",
+  "status_obra": "atrasado", 
+  "indicadores": {
+    "fisico": {
+      "previsto_acumulado": "25.0%",
+      "realizado_acumulado": "12.88%",
+      "previsto_mensal": "5.0%",
+      "realizado_mensal": "4.8%"
+    },
+    "financeiro": {
+      "previsto_acumulado": "R$ 88.45M",
+      "realizado_acumulado": "R$ 11.40M",
+      "previsto_mensal": "R$ 4.4M",
+      "realizado_mensal": "R$ 4.2M"
+    }
+  },
+  "grafico": {
+    "labels": ["Mai", "Jun", "Jul", "Ago", "Set", "Out"],
+    "fisico_previsto": [10, 20, 28, 35, 40, 45],
+    "fisico_realizado": [9, 18, 25, 34, 39, 42.5]
+  },
+  "avaliacao": "Durante o mês de Abril/25, as atividades de fundação e superestrutura seguiram os padrões de qualidade exigidos..."
+}

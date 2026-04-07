@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Template Power BI</title>
+    <style>
+        /* Importando fonte profissional (Segoe UI ou similar) */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* O tamanho exato de um dashboard Power BI em Full HD (16:9) */
+        body {
+            width: 1920px;
+            height: 1080px;
+            background-color: #1E293B; /* Soft Dark Background */
+            color: #F1F5F9;
+            padding: 30px;
+            position: relative;
+        }
+
+        /* ------------------------------------- */
+        /* ZONA 1: CABEÇALHO                     */
+        /* ------------------------------------- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 120px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 20px;
+        }
+        .header img {
+            max-height: 90px;
+            max-width: 250px;
+            object-fit: contain;
+        }
+        .header h1 {
+            font-size: 26px;
+            color: #FFFFFF;
+            letter-spacing: 1px;
+            text-align: center;
+            flex: 1;
+            margin: 0 20px;
+        }
+        
+        .sub-header {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        /* Espaço onde os filtros suspensos do Power BI vão ficar */
+        .filter-placeholder {
+            width: 400px;
+            height: 50px;
+            background-color: transparent;
+            border: 1px dashed #475569;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748B;
+            font-size: 14px;
+        }
+
+        /* ------------------------------------- */
+        /* ZONA 1.5: DADOS CONTRATUAIS           */
+        /* ------------------------------------- */
+        .contract-section {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .contract-card {
+            background-color: #334155;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 6px solid #FF9900; /* Borda Laranja */
+            flex: 1;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+        .contract-card.large {
+            flex: 2; /* A caixa de Objeto é maior */
+        }
+        .label {
+            color: #FF9900;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .value {
+            font-size: 18px;
+            color: #E2E8F0;
+            line-height: 1.5;
+        }
+        
+        /* Espaços reservados (buracos) onde os Cartões do Power BI vão entrar */
+        .dynamic-value-hole {
+            width: 150px;
+            height: 30px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border: 1px dashed #64748B;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+
+        /* ------------------------------------- */
+        /* ZONA 2: CAIXAS DOS KPIs (CURVA S)     */
+        /* ------------------------------------- */
+        .kpi-section {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .kpi-box {
+            background-color: #334155;
+            border-radius: 12px;
+            height: 120px;
+            flex: 1;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .kpi-label {
+            color: #94A3B8;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        /* O Power BI preencherá o resto! */
+
+        /* ------------------------------------- */
+        /* ZONA 3 E 4: GRÁFICOS                  */
+        /* ------------------------------------- */
+        .charts-section {
+            display: flex;
+            gap: 20px;
+            height: 520px;
+        }
+        .chart-box {
+            background-color: #334155;
+            border-radius: 12px;
+            flex: 2;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+        }
+        .chart-box.small {
+            flex: 1;
+        }
+        .chart-title {
+            color: #E2E8F0;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <div class="header">
+        <img src="Brasao_Governo_500.png" alt="Governo do Espírito Santo" onerror="this.src='https://via.placeholder.com/150x80?text=Logo+ES'">
+        <h1>CENTRO INTEGRADO DE PERÍCIA TÉCNICO-CIENTÍFICA DO ESPÍRITO SANTO</h1>
+        <img src="logo-geribello-white-h-1.png" alt="Geribello Engenharia" onerror="this.src='https://via.placeholder.com/150x80?text=Logo+Geribello'">
+    </div>
+    
+    <div class="sub-header">
+        <div class="filter-placeholder">Coloque os filtros suspensos do Power BI aqui</div>
+    </div>
+
+    <!-- Dados Contratuais (Os textos estáticos já ficam fixos na imagem) -->
+    <div class="contract-section">
+        <div class="contract-card">
+            <div class="label">Contrato nº</div>
+            <div class="value">2024.000005.48101.01</div>
+            <div class="label" style="margin-top: 20px;">Valor Contratado</div>
+            <div class="value">R$ 88.450.000,00</div>
+        </div>
+
+        <div class="contract-card">
+            <div class="label">Contratada</div>
+            <div class="value">Construtora LDN Ltda</div>
+            <div class="label" style="margin-top: 20px;">Prazo de Obra Atual</div>
+            <!-- Esse "buraco" é onde você arrastará o cartão do Power BI -->
+            <div class="dynamic-value-hole"></div> 
+        </div>
+
+        <div class="contract-card large">
+            <div class="label">Objeto</div>
+            <div class="value">Contratação de empresa Construtora para desenho e construção do Centro Integrado de Perícia Técnico-Científica do Estado do Espírito Santo.</div>
+        </div>
+    </div>
+
+    <!-- Caixas Vazias para os 4 Cartões Principais -->
+    <div class="kpi-section">
+        <div class="kpi-box"><div class="kpi-label">Físico Previsto Acumulado</div></div>
+        <div class="kpi-box"><div class="kpi-label">Físico Realizado Acumulado</div></div>
+        <div class="kpi-box"><div class="kpi-label">Financeiro Previsto (R$)</div></div>
+        <div class="kpi-box"><div class="kpi-label">Financeiro Realizado (R$)</div></div>
+    </div>
+
+    <!-- Caixas Vazias para a Curva S e para a Tabela Gantt -->
+    <div class="charts-section">
+        <div class="chart-box">
+            <div class="chart-title">Análise de Curva S (Física e Financeira)</div>
+            <!-- O gráfico de linha e barra do PBI entrará aqui sem fundo -->
+        </div>
+        <div class="chart-box small">
+            <div class="chart-title">Detalhamento por Etapa</div>
+            <!-- A Tabela Matriz do PBI entrará aqui sem fundo -->
+        </div>
+    </div>
+
+</body>
+</html>

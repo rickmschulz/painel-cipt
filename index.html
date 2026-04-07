@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Obras - CIPT CES</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js para os Gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans antialiased">
+
+    <!-- Navbar -->
+    <nav class="bg-slate-900 text-white shadow-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Top bar with logos -->
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Left: Brasão + Text -->
+                <div class="flex items-center space-x-4">
+                    <img src="./assets/Brasao_Governo_500.png" 
+                         alt="Brasão Governo do Espírito Santo" 
+                         title="Governo do Espírito Santo"
+                         class="h-10 sm:h-12 w-auto object-contain">
+                    
+                    <div class="hidden md:block">
+                        <h1 class="text-lg font-bold leading-tight uppercase">Centro Integrado de Perícia Técnico-Científica do ES</h1>
+                        <p class="text-xs text-slate-300 font-medium tracking-wide mt-0.5 uppercase">Relatório de Desempenho - Medição <span id="mes-ref-desktop">ABRIL/25</span></p>
+                    </div>
+                </div>
+                
+                <!-- Right: Logo Geribello -->
+                <div class="flex items-center flex-shrink-0 ml-4">
+                    <img src="./assets/logo-geribello-white-h-1.png" 
+                         alt="Geribello Engenharia" 
+                         title="Geribello Engenharia"
+                         class="h-8 sm:h-10 w-auto object-contain">
+                </div>
+            </div>
+            
+            <!-- Mobile title (visible only on small screens) -->
+            <div class="pb-4 md:hidden border-t border-slate-700 pt-3 mt-1">
+                <h1 class="text-sm font-bold leading-tight uppercase">Centro Integrado de Perícia Técnico-Científica do ES</h1>
+                <p class="text-xs text-slate-300 font-medium tracking-wide mt-1 uppercase">Relatório de Desempenho - Medição <span id="mes-ref-mobile">ABRIL/25</span></p>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+
+        <!-- Seção 1: Dados Contratuais -->
+        <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="border-b border-slate-200 bg-slate-50 px-6 py-4 flex items-center space-x-2">
+                <i data-lucide="file-text" class="w-5 h-5 text-brand-600"></i>
+                <h2 class="text-lg font-semibold text-slate-800">Dados Contratuais</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div>
+                        <p class="text-sm text-slate-500 font-medium">Contrato Nº</p>
+                        <p class="font-semibold">2024.000005.48101.01</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500 font-medium">Contratada</p>
+                        <p class="font-semibold">Construtora LDN Ltda</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500 font-medium">Valor Contratado</p>
+                        <p class="font-semibold text-brand-600">R$ 88.450.000,00</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500 font-medium">OIS / Data-base</p>
+                        <p class="font-semibold">- / -</p>
+                    </div>
+                    <div class="md:col-span-2 lg:col-span-4">
+                        <p class="text-sm text-slate-500 font-medium">Objeto</p>
+                        <p class="text-sm">Contratação de empresa Construtora para desenho e construção do Centro Integrado de Perícia Técnico-Científica do Estado do Espírito Santo.</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500 font-medium">Prazo de Obra Original</p>
+                        <p class="font-semibold">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500 font-medium">Vigência Original</p>
+                        <p class="font-semibold">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500 font-medium">Prazo de Obra Atual</p>
+                        <p class="font-semibold">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500 font-medium">Vigência Atual</p>
+                        <p class="font-semibold">-</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 2: Desempenho e Indicadores -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Físico -->
+            <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="border-b border-slate-200 bg-slate-50 px-6 py-4">
+                    <h2 class="text-md font-semibold text-slate-800 flex items-center space-x-2">
+                        <i data-lucide="activity" class="w-5 h-5 text-blue-600"></i>
+                        <span>Avanço Físico (%)</span>
+                    </h2>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div class="flex justify-between items-center pb-2 border-b">
+                        <span class="text-sm text-slate-600">Previsto (Acumulado)</span>
+                        <span id="val-fis-prev-acum" class="font-bold text-lg">25.0%</span>
+                    </div>
+                    <div class="flex justify-between items-center pb-2 border-b">
+                        <span class="text-sm text-slate-600">Realizado (Acumulado)</span>
+                        <span id="val-fis-real-acum" class="font-bold text-lg text-blue-600">12.88%</span>
+                    </div>
+                    <div class="flex justify-between items-center pb-2 border-b">
+                        <span class="text-sm text-slate-600">Previsto (Mensal)</span>
+                        <span id="val-fis-prev-mensal" class="font-bold">5.0%</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-slate-600">Realizado (Mensal)</span>
+                        <span id="val-fis-real-mensal" class="font-bold">4.8%</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Financeiro -->
+            <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="border-b border-slate-200 bg-slate-50 px-6 py-4">
+                    <h2 class="text-md font-semibold text-slate-800 flex items-center space-x-2">
+                        <i data-lucide="dollar-sign" class="w-5 h-5 text-emerald-600"></i>
+                        <span>Avanço Financeiro (R$)</span>
+                    </h2>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div class="flex justify-between items-center pb-2 border-b">
+                        <span class="text-sm text-slate-600">Previsto (Acumulado)</span>
+                        <span id="val-fin-prev-acum" class="font-bold text-lg">R$ 88.45M</span>
+                    </div>
+                    <div class="flex justify-between items-center pb-2 border-b">
+                        <span class="text-sm text-slate-600">Realizado (Acumulado)</span>
+                        <span id="val-fin-real-acum" class="font-bold text-lg text-emerald-600">R$ 11.40M</span>
+                    </div>
+                    <div class="flex justify-between items-center pb-2 border-b">
+                        <span class="text-sm text-slate-600">Previsto (Mensal)</span>
+                        <span id="val-fin-prev-mensal" class="font-bold">R$ 4.4M</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-slate-600">Realizado (Mensal)</span>
+                        <span id="val-fin-real-mensal" class="font-bold">R$ 4.2M</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Status -->
+            <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="border-b border-slate-200 bg-slate-50 px-6 py-4">
+                    <h2 class="text-md font-semibold text-slate-800 flex items-center space-x-2">
+                        <i data-lucide="clipboard-check" class="w-5 h-5 text-orange-600"></i>
+                        <span>Status Geral</span>
+                    </h2>
+                </div>
+                <div class="p-6 space-y-6">
+                    <div>
+                        <p class="text-sm text-slate-500 font-medium mb-2">Status da Obra</p>
+                        <!-- Container dinâmico do Status -->
+                        <div id="status-obra-container">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-slate-100 text-slate-500">
+                                Carregando...
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-100">
+                        <div class="text-center p-3 bg-slate-50 rounded-lg">
+                            <i data-lucide="hard-hat" class="w-6 h-6 mx-auto text-slate-600 mb-1"></i>
+                            <p class="text-xs text-slate-500 uppercase tracking-wider">Segurança</p>
+                            <p class="font-semibold text-green-600">Conforme</p>
+                        </div>
+                        <div class="text-center p-3 bg-slate-50 rounded-lg">
+                            <i data-lucide="leaf" class="w-6 h-6 mx-auto text-slate-600 mb-1"></i>
+                            <p class="text-xs text-slate-500 uppercase tracking-wider">Meio Ambiente</p>
+                            <p class="font-semibold text-green-600">Conforme</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Seção 3: Gráficos e Avaliação -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Gráfico -->
+            <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden lg:col-span-2">
+                <div class="border-b border-slate-200 bg-slate-50 px-6 py-4 flex justify-between items-center">
+                    <h2 class="text-md font-semibold text-slate-800">Gráfico Físico/Financeiro - Previsto x Realizado</h2>
+                </div>
+                <div class="p-6">
+                    <canvas id="desempenhoChart" height="100"></canvas>
+                </div>
+            </section>
+
+            <!-- Avaliação -->
+            <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+                <div class="border-b border-slate-200 bg-slate-50 px-6 py-4">
+                    <h2 class="text-md font-semibold text-slate-800">Avaliação Técnica</h2>
+                </div>
+                <div class="p-6 flex-grow bg-yellow-50/50">
+                    <h3 class="text-sm font-bold text-slate-800 mb-2">Qualidade e Serviços Executados</h3>
+                    <p id="texto-avaliacao" class="text-sm text-slate-600 leading-relaxed text-justify whitespace-pre-line">
+                        Durante o mês de Abril/25, as atividades de fundação e superestrutura seguiram os padrões de qualidade exigidos. Houve um leve desvio no cronograma físico (previsto 45%, realizado 42.5%) decorrente de intempéries pluviométricas na primeira quinzena. 
+                        
+                        Os protocolos de Segurança do Trabalho e Meio Ambiente estão sendo rigorosamente cumpridos, sem registro de acidentes com afastamento ou passivos ambientais.
+                    </p>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer class="bg-slate-800 text-slate-400 py-6 mt-8 text-center text-sm">
+        <p>&copy; 2026 Painel de Monitoramento de Obras. Gerado automaticamente.</p>
+    </footer>
+
+    <!-- Scripts de Inicialização -->
+    <script>
+        // Inicializa os ícones do Lucide
+        lucide.createIcons();
+
+        // Configuração de Status
+        const configsStatus = {
+            'atrasado': { classes: 'bg-yellow-100 text-yellow-800', icone: 'alert-circle', texto: 'Atrasado' },
+            'no_prazo': { classes: 'bg-green-100 text-green-800', icone: 'check-circle', texto: 'No Prazo' },
+            'adiantado': { classes: 'bg-blue-100 text-blue-800', icone: 'trending-up', texto: 'Adiantado' }
+        };
+
+        // Função principal que busca e processa o JSON
+        async function carregarDados() {
+            try {
+                // Faz a requisição para pegar o arquivo json na mesma pasta
+                const resposta = await fetch('dados.json');
+                const dados = await resposta.json();
+
+                // 0. Atualizar Mês de Referência nos títulos
+                if (document.getElementById('mes-ref-desktop')) {
+                    document.getElementById('mes-ref-desktop').innerText = dados.mes_referencia;
+                }
+                if (document.getElementById('mes-ref-mobile')) {
+                    document.getElementById('mes-ref-mobile').innerText = dados.mes_referencia;
+                }
+
+                // 1. Atualizar Cartões Físicos
+                document.getElementById('val-fis-prev-acum').innerText = dados.indicadores.fisico.previsto_acumulado;
+                document.getElementById('val-fis-real-acum').innerText = dados.indicadores.fisico.realizado_acumulado;
+                document.getElementById('val-fis-prev-mensal').innerText = dados.indicadores.fisico.previsto_mensal;
+                document.getElementById('val-fis-real-mensal').innerText = dados.indicadores.fisico.realizado_mensal;
+
+                // 2. Atualizar Cartões Financeiros
+                document.getElementById('val-fin-prev-acum').innerText = dados.indicadores.financeiro.previsto_acumulado;
+                document.getElementById('val-fin-real-acum').innerText = dados.indicadores.financeiro.realizado_acumulado;
+                document.getElementById('val-fin-prev-mensal').innerText = dados.indicadores.financeiro.previsto_mensal;
+                document.getElementById('val-fin-real-mensal').innerText = dados.indicadores.financeiro.realizado_mensal;
+
+                // 3. Atualizar Texto de Avaliação
+                document.getElementById('texto-avaliacao').innerText = dados.avaliacao;
+
+                // 4. Renderizar Status
+                const statusContainer = document.getElementById('status-obra-container');
+                const statusSelecionado = dados.status_obra || 'no_prazo'; // Padrão se não existir no JSON
+                const config = configsStatus[statusSelecionado];
+
+                if (statusContainer && config) {
+                    statusContainer.innerHTML = `
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${config.classes}">
+                            <i data-lucide="${config.icone}" class="w-4 h-4 mr-1"></i> ${config.texto}
+                        </span>
+                    `;
+                    // Re-processa os ícones pois injetamos um "<i>" novo dinamicamente
+                    lucide.createIcons();
+                }
+
+                // 5. Renderizar o Gráfico com os arrays do JSON
+                renderizarGrafico(dados.grafico.labels, dados.grafico.fisico_previsto, dados.grafico.fisico_realizado);
+
+            } catch (erro) {
+                console.warn("Modo local ou dados.json não encontrado. Mantendo dados estáticos.", erro);
+                
+                // Fallback para o status estático caso não encontre o JSON
+                const statusContainer = document.getElementById('status-obra-container');
+                if (statusContainer) {
+                    const fallbackConfig = configsStatus['atrasado'];
+                    statusContainer.innerHTML = `
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${fallbackConfig.classes}">
+                            <i data-lucide="${fallbackConfig.icone}" class="w-4 h-4 mr-1"></i> ${fallbackConfig.texto}
+                        </span>
+                    `;
+                    lucide.createIcons();
+                }
+
+                // Fallback do gráfico
+                const labels = ['Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out'];
+                const fisicoPrevisto = [10, 20, 28, 35, 40, 45];
+                const fisicoRealizado = [9, 18, 25, 34, 39, 42.5];
+                renderizarGrafico(labels, fisicoPrevisto, fisicoRealizado);
+            }
+        }
+
+        // Função isolada para o Chart.js
+        function renderizarGrafico(labelsJson, previstoJson, realizadoJson) {
+            const ctx = document.getElementById('desempenhoChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labelsJson,
+                    datasets: [
+                        {
+                            label: 'Físico Previsto (%)',
+                            data: previstoJson,
+                            borderColor: '#94a3b8',
+                            backgroundColor: 'rgba(148, 163, 184, 0.1)',
+                            borderDash: [5, 5],
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Físico Realizado (%)',
+                            data: realizadoJson,
+                            borderColor: '#0284c7',
+                            backgroundColor: 'rgba(2, 132, 199, 0.1)',
+                            tension: 0.3,
+                            fill: true,
+                            borderWidth: 3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: { mode: 'index', intersect: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: { callback: function(value) { return value + '%'; } }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Quando a página terminar de carregar, executa a função de buscar dados
+        document.addEventListener('DOMContentLoaded', carregarDados);
+    </script>
+</body>
+</html>
