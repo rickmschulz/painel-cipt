@@ -1,7 +1,7 @@
 {
   "mes_referencia": "ABRIL/25",
   "_comment": "atrasado, no_prazo, adiantado",
-  "status_obra": "atrasado", 
+  "status_obra": "atrasado",
   "indicadores": {
     "fisico": {
       "previsto_acumulado": "25.0%",
@@ -17,9 +17,53 @@
     }
   },
   "grafico": {
-    "labels": ["Mai", "Jun", "Jul", "Ago", "Set", "Out"],
-    "fisico_previsto": [10, 20, 28, 35, 40, 45],
-    "fisico_realizado": [9, 18, 25, 34, 39, 42.5]
+    "labels": [
+      "Mai",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Set",
+      "Out"
+    ],
+    "fisico_previsto": [
+      10,
+      20,
+      28,
+      35,
+      40,
+      45
+    ],
+    "fisico_realizado": [
+      9,
+      18,
+      25,
+      34,
+      39,
+      42.5
+    ]
   },
-  "avaliacao": "Durante o mês de Abril/25, as atividades de fundação e superestrutura seguiram os padrões de qualidade exigidos..."
+  "avaliacao": "Durante o mês de Abril/25, as atividades de fundação e superestrutura seguiram os padrões de qualidade exigidos...",
+  "links": {
+    "evol_obra": "https://youtu.be/iiEAKiqdq4U",
+    "relatorio_pdf": "https://www.dropbox.com/s/exemplo/relatorio.pdf?dl=0",
+    "cronograma": "https://www.dropbox.com/s/exemplo/cronograma.pdf?dl=1"
+  },
+  "imagens": [
+    {
+      "url": "./assets/Foto-00.jpeg",
+      "legenda": "Concretagem da laje do 3º pavimento (Junta D)"
+    },
+    {
+      "url": "./assets/Foto-03.jpeg",
+      "legenda": "Concretagem da laje do 3º pavimento (Junta D)"
+    },
+    {
+      "url": "./assets/Foto-06.jpeg",
+      "legenda": "Concretagem da laje do 3º pavimento (Junta D)"
+    },
+    {
+      "url": "./assets/Foto-09.jpeg",
+      "legenda": "Concretagem da laje do 3º pavimento (Junta D)"
+    }
+  ]
 }

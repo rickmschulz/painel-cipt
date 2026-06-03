@@ -1,0 +1,1 @@
+chrome.exe --allow-file-access-from-files --user-data-dir="%TMP%\chomedev" "C:\Users\geribello\Desktop\dashboard-painel-shes\website\index.html"

@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel de Obras - CIPT CES</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏗️</text></svg>">
-    
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏗️</text></svg>">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Chart.js para os Gráficos -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -32,6 +34,7 @@
         }
     </script>
 </head>
+
 <body class="bg-slate-100 text-slate-800 font-sans antialiased">
 
     <!-- Navbar -->
@@ -39,33 +42,33 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Top bar with logos -->
             <div class="flex items-center justify-between h-20">
-                
+
                 <!-- Left: Brasão + Text -->
                 <div class="flex items-center space-x-4">
-                    <img src="./assets/Brasao_Governo_500.png" 
-                         alt="Brasão Governo do Espírito Santo" 
-                         title="Governo do Espírito Santo"
-                         class="h-10 sm:h-12 w-auto object-contain">
-                    
+                    <img src="./assets/Brasao_Governo_500.png" alt="Brasão Governo do Espírito Santo"
+                        title="Governo do Espírito Santo" class="h-10 sm:h-12 w-auto object-contain">
+
                     <div class="hidden md:block">
-                        <h1 class="text-lg font-bold leading-tight uppercase">Centro Integrado de Perícia Técnico-Científica do ES</h1>
-                        <p class="text-xs text-slate-300 font-medium tracking-wide mt-0.5 uppercase">Relatório de Desempenho - Medição <span id="mes-ref-desktop">ABRIL/25</span></p>
+                        <h1 class="text-lg font-bold leading-tight uppercase">Centro Integrado de Perícia
+                            Técnico-Científica do ES</h1>
+                        <p class="text-xs text-slate-300 font-medium tracking-wide mt-0.5 uppercase">Relatório de
+                            Desempenho - Medição <span id="mes-ref-desktop">ABRIL/25</span></p>
                     </div>
                 </div>
-                
+
                 <!-- Right: Logo Geribello -->
                 <div class="flex items-center flex-shrink-0 ml-4">
-                    <img src="./assets/logo-geribello-white-h-1.png" 
-                         alt="Geribello Engenharia" 
-                         title="Geribello Engenharia"
-                         class="h-8 sm:h-10 w-auto object-contain">
+                    <img src="./assets/logo-geribello-white-h-1.png" alt="Geribello Engenharia"
+                        title="Geribello Engenharia" class="h-8 sm:h-10 w-auto object-contain">
                 </div>
             </div>
-            
+
             <!-- Mobile title (visible only on small screens) -->
             <div class="pb-4 md:hidden border-t border-slate-700 pt-3 mt-1">
-                <h1 class="text-sm font-bold leading-tight uppercase">Centro Integrado de Perícia Técnico-Científica do ES</h1>
-                <p class="text-xs text-slate-300 font-medium tracking-wide mt-1 uppercase">Relatório de Desempenho - Medição <span id="mes-ref-mobile">ABRIL/25</span></p>
+                <h1 class="text-sm font-bold leading-tight uppercase">Centro Integrado de Perícia Técnico-Científica do
+                    ES</h1>
+                <p class="text-xs text-slate-300 font-medium tracking-wide mt-1 uppercase">Relatório de Desempenho -
+                    Medição <span id="mes-ref-mobile">ABRIL/25</span></p>
             </div>
         </div>
     </nav>
@@ -99,7 +102,8 @@
                     </div>
                     <div class="md:col-span-2 lg:col-span-4">
                         <p class="text-sm text-slate-500 font-medium">Objeto</p>
-                        <p class="text-sm">Contratação de empresa Construtora para desenho e construção do Centro Integrado de Perícia Técnico-Científica do Estado do Espírito Santo.</p>
+                        <p class="text-sm">Contratação de empresa Construtora para desenho e construção do Centro
+                            Integrado de Perícia Técnico-Científica do Estado do Espírito Santo.</p>
                     </div>
                     <div>
                         <p class="text-sm text-slate-500 font-medium">Prazo de Obra Original</p>
@@ -123,7 +127,7 @@
 
         <!-- Seção 2: Desempenho e Indicadores -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            
+
             <!-- Físico -->
             <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
                 <div class="border-b border-slate-200 bg-slate-50 px-6 py-4">
@@ -193,12 +197,13 @@
                         <p class="text-sm text-slate-500 font-medium mb-2">Status da Obra</p>
                         <!-- Container dinâmico do Status -->
                         <div id="status-obra-container">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-slate-100 text-slate-500">
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-slate-100 text-slate-500">
                                 Carregando...
                             </span>
                         </div>
                     </div>
-                    
+
                     <div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-100">
                         <div class="text-center p-3 bg-slate-50 rounded-lg">
                             <i data-lucide="hard-hat" class="w-6 h-6 mx-auto text-slate-600 mb-1"></i>
@@ -215,13 +220,64 @@
             </section>
         </div>
 
+        <!-- Documentos -->
+        <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="border-b border-slate-200 bg-slate-50 px-6 py-4 flex items-center space-x-2">
+                <i data-lucide="folder-open" class="w-5 h-5 text-brand-600"></i>
+                <h2 class="text-md font-semibold text-slate-800">Documentos Gerenciais e Fotos</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                    <a href="#" target="_blank" id="link-evol-obra" target="_blank" rel="noopener noreferrer"
+                        class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
+                        <div
+                            class="bg-blue-100 p-3 rounded-lg text-blue-600 group-hover:scale-110 transition-transform">
+                            <i data-lucide="camera" class="w-6 h-6"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="font-semibold text-slate-800">Evolução da Obra</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Evolução da Obra até Abril/26</p>
+                        </div>
+                    </a>
+
+                    <a href="COLE_O_LINK_DO_DROPBOX_AQUI?dl=0" id="link-relatorio" target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
+                        <div class="bg-red-100 p-3 rounded-lg text-red-600 group-hover:scale-110 transition-transform">
+                            <i data-lucide="book-open-text" class="w-6 h-6"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="font-semibold text-slate-800">Relatório Mensal</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Visualizar PDF (Dropbox)</p>
+                        </div>
+                    </a>
+
+                    <a href="COLE_O_LINK_DO_DROPBOX_AQUI?dl=1" id="link-cronograma" target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
+                        <div
+                            class="bg-emerald-100 p-3 rounded-lg text-emerald-600 group-hover:scale-110 transition-transform">
+                            <i data-lucide="calendar" class="w-6 h-6"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="font-semibold text-slate-800">Cronograma Atualizado</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Baixar Arquivo</p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
         <!-- Seção 3: Gráficos e Avaliação -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            
+
             <!-- Gráfico -->
             <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden lg:col-span-2">
                 <div class="border-b border-slate-200 bg-slate-50 px-6 py-4 flex justify-between items-center">
-                    <h2 class="text-md font-semibold text-slate-800">Gráfico Físico/Financeiro - Previsto x Realizado</h2>
+                    <h2 class="text-md font-semibold text-slate-800">Gráfico Físico/Financeiro - Previsto x Realizado
+                    </h2>
                 </div>
                 <div class="p-6">
                     <canvas id="desempenhoChart" height="100"></canvas>
@@ -235,15 +291,65 @@
                 </div>
                 <div class="p-6 flex-grow bg-yellow-50/50">
                     <h3 class="text-sm font-bold text-slate-800 mb-2">Qualidade e Serviços Executados</h3>
-                    <p id="texto-avaliacao" class="text-sm text-slate-600 leading-relaxed text-justify whitespace-pre-line">
-                        Durante o mês de Abril/25, as atividades de fundação e superestrutura seguiram os padrões de qualidade exigidos. Houve um leve desvio no cronograma físico (previsto 45%, realizado 42.5%) decorrente de intempéries pluviométricas na primeira quinzena. 
-                        
-                        Os protocolos de Segurança do Trabalho e Meio Ambiente estão sendo rigorosamente cumpridos, sem registro de acidentes com afastamento ou passivos ambientais.
+                    <p id="texto-avaliacao"
+                        class="text-sm text-slate-600 leading-relaxed text-justify whitespace-pre-line">
+                        Durante o mês de Abril/25, as atividades de fundação e superestrutura seguiram os padrões de
+                        qualidade exigidos. Houve um leve desvio no cronograma físico (previsto 45%, realizado 42.5%)
+                        decorrente de intempéries pluviométricas na primeira quinzena.
+
+                        Os protocolos de Segurança do Trabalho e Meio Ambiente estão sendo rigorosamente cumpridos, sem
+                        registro de acidentes com afastamento ou passivos ambientais.
                     </p>
                 </div>
             </section>
 
         </div>
+
+        <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="border-b border-slate-200 bg-slate-50 px-6 py-4 flex items-center space-x-2">
+                <i data-lucide="video" class="w-5 h-5 text-brand-600"></i>
+                <h2 class="text-md font-semibold text-slate-800">Tour Virtual 360º - Acompanhamento</h2>
+            </div>
+            <div class="p-6">
+                <div class="w-full aspect-video bg-slate-100 rounded-lg overflow-hidden border border-slate-200">
+                    <iframe
+                        src="https://www.banibconecta.com/site/tour/196904/geribello-engenharia-ltda/implantacao-26-05-2026/autostart"
+                        class="w-full h-full" frameborder="0" scrolling="no"
+                        allow="gyroscope; accelerometer; xr-spatial-tracking; clipboard-write" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="border-b border-slate-200 bg-slate-50 px-6 py-4 flex items-center space-x-2">
+                <i data-lucide="camera" class="w-5 h-5 text-brand-600"></i>
+                <h2 class="text-lg font-semibold text-slate-800">Registro Fotográfico do Mês</h2>
+            </div>
+            <div class="p-6 flex flex-col items-center">
+                <div
+                    class="relative w-full max-w-4xl h-[300px] sm:h-[450px] bg-slate-900 rounded-lg overflow-hidden shadow-inner group">
+
+                    <div id="carousel-slides" class="w-full h-full relative">
+                    </div>
+
+                    <button onclick="slideAnterior()"
+                        class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-10">
+                        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                    </button>
+
+                    <button onclick="proximoSlide()"
+                        class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-10">
+                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                    </button>
+
+                    <div id="carousel-indicators"
+                        class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
     </main>
 
@@ -269,6 +375,10 @@
                 // Faz a requisição para pegar o arquivo json na mesma pasta
                 const resposta = await fetch('dados.json');
                 const dados = await resposta.json();
+
+                document.getElementById('link-evol-obra').href = dados.links.evol_obra;
+                document.getElementById('link-relatorio').href = dados.links.relatorio_pdf;
+                document.getElementById('link-cronograma').href = dados.links.cronograma;
 
                 // 0. Atualizar Mês de Referência nos títulos
                 if (document.getElementById('mes-ref-desktop')) {
@@ -311,9 +421,17 @@
                 // 5. Renderizar o Gráfico com os arrays do JSON
                 renderizarGrafico(dados.grafico.labels, dados.grafico.fisico_previsto, dados.grafico.fisico_realizado);
 
+                // 6. Carregar Imagens do Carrossel vindas do JSON (Caso existam)
+                if (dados.imagens && dados.imagens.length > 0) {
+                    listaImagens = dados.imagens;
+                } else {
+                    listaImagens = obterImagensFallback();
+                }
+                inicializarCarrossel(listaImagens);
+
             } catch (erro) {
                 console.warn("Modo local ou dados.json não encontrado. Mantendo dados estáticos.", erro);
-                
+
                 // Fallback para o status estático caso não encontre o JSON
                 const statusContainer = document.getElementById('status-obra-container');
                 if (statusContainer) {
@@ -334,10 +452,82 @@
             }
         }
 
+        // Monta o HTML interno do Carrossel baseado na lista informada
+        function inicializarCarrossel(imagens) {
+            const containerSlides = document.getElementById('carousel-slides');
+            const containerIndicadores = document.getElementById('carousel-indicators');
+
+            containerSlides.innerHTML = '';
+            containerIndicadores.innerHTML = '';
+            totalSlides = imagens.length;
+            slideAtual = 0;
+
+            imagens.forEach((img, index) => {
+                // Cria o elemento de Slide
+                const slide = document.createElement('div');
+                slide.className = `absolute inset-0 transition-opacity duration-700 ease-in-out ${index === 0 ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`;
+                slide.id = `carousel-slide-${index}`;
+                slide.innerHTML = `
+                    <img src="${img.url}" class="w-full h-full object-cover" alt="${img.legenda || 'Imagem da Obra'}">
+                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-5 pt-12 text-white">
+                        <p class="text-xs uppercase font-semibold text-brand-100 tracking-wider mb-1">Registro Visual</p>
+                        <p class="text-sm sm:text-base font-medium drop-shadow">${img.legenda || ''}</p>
+                    </div>
+                `;
+                containerSlides.appendChild(slide);
+
+                // Cria a bolinha indicadora
+                const bolinha = document.createElement('button');
+                bolinha.className = `w-2.5 h-2.5 rounded-full transition-all ${index === 0 ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/80'}`;
+                bolinha.id = `carousel-indicator-${index}`;
+                bolinha.setAttribute('onclick', `irParaSlide(${index})`);
+                containerIndicadores.appendChild(bolinha);
+            });
+
+            // Ativa os novos ícones do Lucide dentro dos botões se houver algum
+            lucide.createIcons();
+        }
+
+        // Função para atualizar visualmente o carrossel na troca de slides
+        function atualizarCarrossel() {
+            for (let i = 0; i < totalSlides; i++) {
+                const slide = document.getElementById(`carousel-slide-${i}`);
+                const indicador = document.getElementById(`carousel-indicator-${i}`);
+
+                if (i === slideAtual) {
+                    slide.classList.remove('opacity-0', '-z-10');
+                    slide.classList.add('opacity-100', 'z-0');
+                    indicador.classList.remove('bg-white/50', 'scale-100');
+                    indicador.classList.add('bg-white', 'scale-125');
+                } else {
+                    slide.classList.remove('opacity-100', 'z-0');
+                    slide.classList.add('opacity-0', '-z-10');
+                    indicador.classList.remove('bg-white', 'scale-125');
+                    indicador.classList.add('bg-white/50', 'scale-100');
+                }
+            }
+        }
+
+        function proximoSlide() {
+            slideAtual = (slideAtual + 1) % totalSlides;
+            atualizarCarrossel();
+        }
+
+        function slideAnterior() {
+            slideAtual = (slideAtual - 1 + totalSlides) % totalSlides;
+            atualizarCarrossel();
+        }
+
+        function irParaSlide(index) {
+            slideAtual = index;
+            atualizarCarrossel();
+        }
+
+
         // Função isolada para o Chart.js
         function renderizarGrafico(labelsJson, previstoJson, realizadoJson) {
             const ctx = document.getElementById('desempenhoChart').getContext('2d');
-            
+
             new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -373,7 +563,7 @@
                         y: {
                             beginAtZero: true,
                             max: 100,
-                            ticks: { callback: function(value) { return value + '%'; } }
+                            ticks: { callback: function (value) { return value + '%'; } }
                         }
                     }
                 }
@@ -384,4 +574,5 @@
         document.addEventListener('DOMContentLoaded', carregarDados);
     </script>
 </body>
+
 </html>
