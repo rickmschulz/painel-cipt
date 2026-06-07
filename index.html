@@ -224,20 +224,20 @@
         <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
             <div class="border-b border-slate-200 bg-slate-50 px-6 py-4 flex items-center space-x-2">
                 <i data-lucide="folder-open" class="w-5 h-5 text-brand-600"></i>
-                <h2 class="text-md font-semibold text-slate-800">Documentos Gerenciais e Fotos</h2>
+                <h2 class="text-md font-semibold text-slate-800">Documentos Gerenciais</h2>
             </div>
             <div class="p-6">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
-                    <a href="#" target="_blank" id="link-evol-obra" target="_blank" rel="noopener noreferrer"
+                    <a href="#" target="_blank" id="btn-link-evol-obra" target="_blank" rel="noopener noreferrer"
                         class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
                         <div
                             class="bg-blue-100 p-3 rounded-lg text-blue-600 group-hover:scale-110 transition-transform">
                             <i data-lucide="camera" class="w-6 h-6"></i>
                         </div>
                         <div class="ml-4">
-                            <p class="font-semibold text-slate-800">Evolução da Obra</p>
-                            <p class="text-xs text-slate-500 mt-0.5">Evolução da Obra até Abril/26</p>
+                            <p class="font-semibold text-slate-800">Acompanhamento Fotográfico</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Evolução da Obra, Banib e Registros Fotográficos</p>
                         </div>
                     </a>
 
@@ -306,16 +306,50 @@
         </div>
 
         <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-            <div class="border-b border-slate-200 bg-slate-50 px-6 py-4 flex items-center space-x-2">
-                <i data-lucide="video" class="w-5 h-5 text-brand-600"></i>
-                <h2 class="text-md font-semibold text-slate-800">Tour Virtual 360º - Acompanhamento</h2>
+            <div class="border-b border-slate-200 bg-slate-50 px-6 py-4 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="video" class="w-5 h-5 text-brand-600"></i>
+                    <h2 class="text-md font-semibold text-slate-800">Tour Virtual 360º - Acompanhamento</h2>
+                </div>
+                <button onclick="alternarTelaCheia()"
+                    class="flex items-center space-x-1 text-sm text-slate-500 hover:text-brand-600 transition-colors focus:outline-none"
+                    title="Expandir para Tela Cheia">
+                    <i data-lucide="maximize" class="w-4 h-4"></i>
+                    <span class="hidden sm:inline font-medium">Tela Cheia</span>
+                </button>
             </div>
             <div class="p-6">
                 <div class="w-full aspect-video bg-slate-100 rounded-lg overflow-hidden border border-slate-200">
-                    <iframe
+                    <iframe id="banib-iframe"
                         src="https://www.banibconecta.com/site/tour/196904/geribello-engenharia-ltda/implantacao-26-05-2026/autostart"
                         class="w-full h-full" frameborder="0" scrolling="no"
-                        allow="gyroscope; accelerometer; xr-spatial-tracking; clipboard-write" allowfullscreen>
+                        allow="gyroscope; accelerometer; xr-spatial-tracking; clipboard-write; fullscreen"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="border-b border-slate-200 bg-slate-50 px-6 py-4 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="clapperboard" class="w-5 h-5 text-brand-600"></i>
+                    <h2 class="text-md font-semibold text-slate-800">Vídeo de Evolução da Obra</h2>
+                </div>
+                <button onclick="alternarTelaCheiaYoutube()" class="flex items-center space-x-1 text-sm text-slate-500 hover:text-brand-600 transition-colors focus:outline-none" title="Expandir para Tela Cheia">
+                    <i data-lucide="maximize" class="w-4 h-4"></i>
+                    <span class="hidden sm:inline font-medium">Tela Cheia</span>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="w-full aspect-video bg-slate-100 rounded-lg overflow-hidden border border-slate-200">
+                    <iframe 
+                        id="link-evol-obra"
+                        src="" 
+                        class="w-full h-full" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" 
+                        allowfullscreen>
                     </iframe>
                 </div>
             </div>
@@ -376,9 +410,15 @@
                 const resposta = await fetch('dados.json');
                 const dados = await resposta.json();
 
-                document.getElementById('link-evol-obra').href = dados.links.evol_obra;
+                // document.getElementById('link-evol-obra').href = dados.links.evol_obra; --- IGNORE Obsolete ---
                 document.getElementById('link-relatorio').href = dados.links.relatorio_pdf;
                 document.getElementById('link-cronograma').href = dados.links.cronograma;
+
+                // Atualizar o iframe do YouTube tratando o link do JSON
+                const iframeYoutube = document.getElementById('link-evol-obra');
+                if (iframeYoutube && dados.links && dados.links.evol_obra) {
+                    iframeYoutube.src = formatarUrlYoutube(dados.links.evol_obra);
+                }
 
                 // 0. Atualizar Mês de Referência nos títulos
                 if (document.getElementById('mes-ref-desktop')) {
@@ -521,6 +561,74 @@
         function irParaSlide(index) {
             slideAtual = index;
             atualizarCarrossel();
+        }
+
+        // Função para ativar/desativar a Tela Cheia do Iframe do Banib Conecta (Tour Virtual 360º)
+        function alternarTelaCheia() {
+            const iframe = document.getElementById('banib-iframe');
+
+            if (!document.fullscreenElement) {
+                // Entrar em tela cheia (com suporte a diferentes navegadores)
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.webkitRequestFullscreen) { /* Safari */
+                    iframe.webkitRequestFullscreen();
+                } else if (iframe.msRequestFullscreen) { /* IE11 */
+                    iframe.msRequestFullscreen();
+                }
+            } else {
+                // Sair da tela cheia
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) { /* Safari */
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE11 */
+                    document.msExitFullscreen();
+                }
+            }
+        }
+
+        // Função auxiliar para converter links normais do YouTube para formato EMBED
+        function formatarUrlYoutube(url) {
+            if (!url) return '';
+            
+            // Caso o link seja do tipo curto (youtu.be/ID)
+            if (url.includes('youtu.be/')) {
+                const id = url.split('youtu.be/')[1].split(/[?#]/)[0];
+                return `https://www.youtube.com/embed/${id}`;
+            }
+            
+            // Caso o link seja do tipo longo (youtube.com/watch?v=ID)
+            if (url.includes('v=')) {
+                const id = url.split('v=')[1].split('&')[0];
+                return `https://www.youtube.com/embed/${id}`;
+            }
+            
+            // Retorna a própria URL caso já esteja no formato correto
+            return url;
+        }
+
+        // Função para ativar/desativar a Tela Cheia do Iframe do YouTube
+        function alternarTelaCheiaYoutube() {
+            const iframe = document.getElementById('link-evol-obra');
+            
+            if (!document.fullscreenElement) {
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.webkitRequestFullscreen) { /* Safari */
+                    iframe.webkitRequestFullscreen();
+                } else if (iframe.msRequestFullscreen) { /* IE11 */
+                    iframe.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
         }
 
 
