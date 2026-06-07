@@ -237,7 +237,8 @@
                         </div>
                         <div class="ml-4">
                             <p class="font-semibold text-slate-800">Acompanhamento Fotográfico</p>
-                            <p class="text-xs text-slate-500 mt-0.5">Evolução da Obra, Banib e Registros Fotográficos</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Evolução da Obra, Banib e Registros Fotográficos
+                            </p>
                         </div>
                     </a>
 
@@ -311,7 +312,7 @@
                     <i data-lucide="video" class="w-5 h-5 text-brand-600"></i>
                     <h2 class="text-md font-semibold text-slate-800">Tour Virtual 360º - Acompanhamento</h2>
                 </div>
-                <button onclick="alternarTelaCheia()"
+                <button onclick="alternarTelaCheia('banib-iframe')"
                     class="flex items-center space-x-1 text-sm text-slate-500 hover:text-brand-600 transition-colors focus:outline-none"
                     title="Expandir para Tela Cheia">
                     <i data-lucide="maximize" class="w-4 h-4"></i>
@@ -336,19 +337,17 @@
                     <i data-lucide="clapperboard" class="w-5 h-5 text-brand-600"></i>
                     <h2 class="text-md font-semibold text-slate-800">Vídeo de Evolução da Obra</h2>
                 </div>
-                <button onclick="alternarTelaCheiaYoutube()" class="flex items-center space-x-1 text-sm text-slate-500 hover:text-brand-600 transition-colors focus:outline-none" title="Expandir para Tela Cheia">
+                <button onclick="alternarTelaCheia('link-evol-obra')"
+                    class="flex items-center space-x-1 text-sm text-slate-500 hover:text-brand-600 transition-colors focus:outline-none"
+                    title="Expandir para Tela Cheia">
                     <i data-lucide="maximize" class="w-4 h-4"></i>
                     <span class="hidden sm:inline font-medium">Tela Cheia</span>
                 </button>
             </div>
             <div class="p-6">
                 <div class="w-full aspect-video bg-slate-100 rounded-lg overflow-hidden border border-slate-200">
-                    <iframe 
-                        id="link-evol-obra"
-                        src="" 
-                        class="w-full h-full" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" 
+                    <iframe id="link-evol-obra" src="" class="w-full h-full" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
                         allowfullscreen>
                     </iframe>
                 </div>
@@ -563,9 +562,29 @@
             atualizarCarrossel();
         }
 
-        // Função para ativar/desativar a Tela Cheia do Iframe do Banib Conecta (Tour Virtual 360º)
-        function alternarTelaCheia() {
-            const iframe = document.getElementById('banib-iframe');
+        // Função auxiliar para converter links normais do YouTube para formato EMBED
+        function formatarUrlYoutube(url) {
+            if (!url) return '';
+
+            // Caso o link seja do tipo curto (youtu.be/ID)
+            if (url.includes('youtu.be/')) {
+                const id = url.split('youtu.be/')[1].split(/[?#]/)[0];
+                return `https://www.youtube.com/embed/${id}`;
+            }
+
+            // Caso o link seja do tipo longo (youtube.com/watch?v=ID)
+            if (url.includes('v=')) {
+                const id = url.split('v=')[1].split('&')[0];
+                return `https://www.youtube.com/embed/${id}`;
+            }
+
+            // Retorna a própria URL caso já esteja no formato correto
+            return url;
+        }
+
+        // Função unificada para ativar/desativar a Tela Cheia
+        function alternarTelaCheia(idElemento) {
+            const iframe = document.getElementById(idElemento);
 
             if (!document.fullscreenElement) {
                 // Entrar em tela cheia (com suporte a diferentes navegadores)
@@ -583,49 +602,6 @@
                 } else if (document.webkitExitFullscreen) { /* Safari */
                     document.webkitExitFullscreen();
                 } else if (document.msExitFullscreen) { /* IE11 */
-                    document.msExitFullscreen();
-                }
-            }
-        }
-
-        // Função auxiliar para converter links normais do YouTube para formato EMBED
-        function formatarUrlYoutube(url) {
-            if (!url) return '';
-            
-            // Caso o link seja do tipo curto (youtu.be/ID)
-            if (url.includes('youtu.be/')) {
-                const id = url.split('youtu.be/')[1].split(/[?#]/)[0];
-                return `https://www.youtube.com/embed/${id}`;
-            }
-            
-            // Caso o link seja do tipo longo (youtube.com/watch?v=ID)
-            if (url.includes('v=')) {
-                const id = url.split('v=')[1].split('&')[0];
-                return `https://www.youtube.com/embed/${id}`;
-            }
-            
-            // Retorna a própria URL caso já esteja no formato correto
-            return url;
-        }
-
-        // Função para ativar/desativar a Tela Cheia do Iframe do YouTube
-        function alternarTelaCheiaYoutube() {
-            const iframe = document.getElementById('link-evol-obra');
-            
-            if (!document.fullscreenElement) {
-                if (iframe.requestFullscreen) {
-                    iframe.requestFullscreen();
-                } else if (iframe.webkitRequestFullscreen) { /* Safari */
-                    iframe.webkitRequestFullscreen();
-                } else if (iframe.msRequestFullscreen) { /* IE11 */
-                    iframe.msRequestFullscreen();
-                }
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) {
                     document.msExitFullscreen();
                 }
             }
