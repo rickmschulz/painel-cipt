@@ -208,38 +208,24 @@
                 </div>
             </section>
 
-            <!-- Status -->
             <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
                 <div class="border-b border-slate-200 bg-slate-50 px-6 py-4">
                     <h2 class="text-md font-semibold text-slate-800 flex items-center space-x-2">
                         <i data-lucide="clipboard-check" class="w-5 h-5 text-orange-600"></i>
-                        <span>Status Geral</span>
+                        <span>Avaliação Técnica</span>
                     </h2>
                 </div>
-                <div class="p-6 space-y-6">
-                    <div>
-                        <p class="text-sm text-slate-500 font-medium mb-2">Status da Obra</p>
-                        <!-- Container dinâmico do Status -->
-                        <div id="status-obra-container">
-                            <span
-                                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-slate-100 text-slate-500">
-                                Carregando...
-                            </span>
-                        </div>
-                    </div>
 
-                    <div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-100">
-                        <div class="text-center p-3 bg-slate-50 rounded-lg">
-                            <i data-lucide="hard-hat" class="w-6 h-6 mx-auto text-slate-600 mb-1"></i>
-                            <p class="text-xs text-slate-500 uppercase tracking-wider">Segurança</p>
-                            <p class="font-semibold text-green-600">Conforme</p>
-                        </div>
-                        <div class="text-center p-3 bg-slate-50 rounded-lg">
-                            <i data-lucide="leaf" class="w-6 h-6 mx-auto text-slate-600 mb-1"></i>
-                            <p class="text-xs text-slate-500 uppercase tracking-wider">Meio Ambiente</p>
-                            <p class="font-semibold text-green-600">Conforme</p>
-                        </div>
-                    </div>
+                <div class="p-6 flex-grow bg-yellow-50/50">
+                    <p id="texto-avaliacao"
+                        class="text-sm text-slate-600 leading-relaxed text-justify whitespace-pre-line">
+                        Durante o mês de Abril/25, as atividades de fundação e superestrutura seguiram os padrões de
+                        qualidade exigidos. Houve um leve desvio no cronograma físico (previsto 45%, realizado 42.5%)
+                        decorrente de intempéries pluviométricas na primeira quinzena.
+
+                        Os protocolos de Segurança do Trabalho e Meio Ambiente estão sendo rigorosamente cumpridos, sem
+                        registro de acidentes com afastamento ou passivos ambientais.
+                    </p>
                 </div>
             </section>
         </div>
@@ -306,25 +292,6 @@
                 </div>
                 <div class="p-6">
                     <canvas id="desempenhoChart" height="100"></canvas>
-                </div>
-            </section>
-
-            <!-- Avaliação -->
-            <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
-                <div class="border-b border-slate-200 bg-slate-50 px-6 py-4">
-                    <h2 class="text-md font-semibold text-slate-800">Avaliação Técnica</h2>
-                </div>
-                <div class="p-6 flex-grow bg-yellow-50/50">
-                    <h3 class="text-sm font-bold text-slate-800 mb-2">Qualidade e Serviços Executados</h3>
-                    <p id="texto-avaliacao"
-                        class="text-sm text-slate-600 leading-relaxed text-justify whitespace-pre-line">
-                        Durante o mês de Abril/25, as atividades de fundação e superestrutura seguiram os padrões de
-                        qualidade exigidos. Houve um leve desvio no cronograma físico (previsto 45%, realizado 42.5%)
-                        decorrente de intempéries pluviométricas na primeira quinzena.
-
-                        Os protocolos de Segurança do Trabalho e Meio Ambiente estão sendo rigorosamente cumpridos, sem
-                        registro de acidentes com afastamento ou passivos ambientais.
-                    </p>
                 </div>
             </section>
 
