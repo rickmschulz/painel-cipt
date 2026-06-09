@@ -125,6 +125,33 @@
             </div>
         </section>
 
+        <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="border-b border-slate-200 bg-slate-50 px-6 py-4 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="map-pin" class="w-5 h-5 text-brand-600"></i>
+                    <h2 class="text-md font-semibold text-slate-800">Localização da Obra</h2>
+                </div>
+                <button onclick="alternarTelaCheia('mapa-iframe')" class="flex items-center space-x-1 text-sm text-slate-500 hover:text-brand-600 transition-colors focus:outline-none" title="Expandir para Tela Cheia">
+                    <i data-lucide="maximize" class="w-4 h-4"></i>
+                    <span class="hidden sm:inline font-medium">Tela Cheia</span>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="w-full h-64 bg-slate-100 rounded-lg overflow-hidden border border-slate-200">
+                    <iframe 
+                        id="mapa-iframe"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1666.4902405615153!2d-40.37737874277374!3d-20.335704361335356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb83d004bbc2407%3A0x4af826e8c4994df7!2sCentro%20Integrado%20de%20Per%C3%ADcia%20T%C3%A9cnico-Cient%C3%ADfica%20do%20ES%20-%20em%20constru%C3%A7%C3%A3o!5e0!3m2!1sen!2sbr!4v1781041223238!5m2!1sen!2sbr" 
+                        class="w-full h-full"
+                        class="w-full h-full" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
         <!-- Seção 2: Desempenho e Indicadores -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
