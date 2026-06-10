@@ -350,12 +350,6 @@
                     <i data-lucide="video" class="w-5 h-5 text-brand-600"></i>
                     <h2 class="text-md font-semibold text-slate-800">Tour Virtual 360º - Acompanhamento</h2>
                 </div>
-                <button onclick="alternarTelaCheia('banib-container')"
-                    class="flex items-center space-x-1 text-sm text-slate-500 hover:text-brand-600 transition-colors focus:outline-none"
-                    title="Expandir para Tela Cheia">
-                    <i data-lucide="maximize" class="w-4 h-4"></i>
-                    <span class="hidden sm:inline font-medium">Tela Cheia</span>
-                </button>
             </div>
             <div class="p-6">
                 <div id="banib-container"
@@ -371,6 +365,15 @@
                             <span>Clique para interagir com o Tour 360º</span>
                         </div>
                     </div>
+
+                    <button onclick="alternarTelaCheiaBanib(event)"
+                        class="absolute bottom-4 right-4 z-20 bg-black/60 hover:bg-black/80 text-white p-2 rounded transition-colors backdrop-blur-sm shadow-lg focus:outline-none group"
+                        title="Alternar Tela Cheia">
+                        <i data-lucide="maximize" id="icone-banib-max"
+                            class="w-5 h-5 block group-hover:scale-110 transition-transform"></i>
+                        <i data-lucide="minimize" id="icone-banib-min"
+                            class="w-5 h-5 hidden group-hover:scale-110 transition-transform"></i>
+                    </button>
 
                     <iframe id="banib-iframe"
                         src="https://www.banibconecta.com/site/tour/196904/geribello-engenharia-ltda/implantacao-26-05-2026/autostart"
@@ -648,6 +651,61 @@
                 setTimeout(() => {
                     overlay.classList.remove('opacity-0');
                 }, 10);
+            }
+        }
+
+        // Função específica para a Tela Cheia do Banib
+        function alternarTelaCheiaBanib(event) {
+            // Impede que o clique no botão ative acidentalmente eventos de outros elementos atrás dele
+            if (event) event.stopPropagation();
+
+            const container = document.getElementById('banib-container');
+
+            if (!document.fullscreenElement) {
+                ativarBanib(); // UX: Libera a interação do Tour automaticamente ao entrar em tela cheia
+
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+
+        // Listener para monitorar a tecla ESC e alternar os ícones dinamicamente
+        document.addEventListener('fullscreenchange', atualizarIconesBanib);
+        document.addEventListener('webkitfullscreenchange', atualizarIconesBanib);
+        document.addEventListener('msfullscreenchange', atualizarIconesBanib);
+
+        function atualizarIconesBanib() {
+            const isFullscreen = !!document.fullscreenElement;
+            const iconeMax = document.getElementById('icone-banib-max');
+            const iconeMin = document.getElementById('icone-banib-min');
+
+            if (iconeMax && iconeMin) {
+                if (isFullscreen) {
+                    iconeMax.classList.remove('block');
+                    iconeMax.classList.add('hidden');
+
+                    iconeMin.classList.remove('hidden');
+                    iconeMin.classList.add('block');
+                } else {
+                    iconeMin.classList.remove('block');
+                    iconeMin.classList.add('hidden');
+
+                    iconeMax.classList.remove('hidden');
+                    iconeMax.classList.add('block');
+                }
             }
         }
 
