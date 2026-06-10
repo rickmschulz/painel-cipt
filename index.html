@@ -257,7 +257,8 @@
             <div class="p-6">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
-                    <a href=".\assets\02-GRÁFICO DA CURVA S - RAO PARA RELATÓRIO MES MAIO 2026.pdf" id="link-curva-s" target="_blank" rel="noopener noreferrer"
+                    <a href=".\assets\02-GRÁFICO DA CURVA S - RAO PARA RELATÓRIO MES MAIO 2026.pdf" id="link-curva-s"
+                        target="_blank" rel="noopener noreferrer"
                         class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
                         <div
                             class="bg-purple-100 p-3 rounded-lg text-purple-600 group-hover:scale-110 transition-transform">
@@ -294,7 +295,7 @@
                         </div>
                     </a>
 
-<!-- 
+                    <!-- 
                     <a href="#" target="_blank" id="btn-link-evol-obra" target="_blank" rel="noopener noreferrer"
                         class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
                         <div
@@ -429,6 +430,11 @@
         // Inicializa os ícones do Lucide
         lucide.createIcons();
 
+        // Variáveis globais do Carrossel
+        let slideAtual = 0;
+        let totalSlides = 0;
+        let listaImagens = [];
+
         // Configuração de Status
         const configsStatus = {
             'atrasado': { classes: 'bg-yellow-100 text-yellow-800', icone: 'alert-circle', texto: 'Atrasado' },
@@ -453,7 +459,7 @@
                     iframeYoutube.src = formatarUrlYoutube(dados.links.evol_obra);
                 }
 
-                // 0. Atualizar Mês de Referência nos títulos
+                // Atualizar Mês de Referência nos títulos
                 if (document.getElementById('mes-ref-desktop')) {
                     document.getElementById('mes-ref-desktop').innerText = dados.mes_referencia;
                 }
@@ -461,67 +467,29 @@
                     document.getElementById('mes-ref-mobile').innerText = dados.mes_referencia;
                 }
 
-                // 1. Atualizar Cartões Físicos
+                // Atualizar Cartões Físicos
                 document.getElementById('val-fis-prev-acum').innerText = dados.indicadores.fisico.previsto_acumulado;
                 document.getElementById('val-fis-real-acum').innerText = dados.indicadores.fisico.realizado_acumulado;
                 document.getElementById('val-fis-prev-mensal').innerText = dados.indicadores.fisico.previsto_mensal;
                 document.getElementById('val-fis-real-mensal').innerText = dados.indicadores.fisico.realizado_mensal;
 
-                // 2. Atualizar Cartões Financeiros
+                // Atualizar Cartões Financeiros
                 document.getElementById('val-fin-prev-acum').innerText = dados.indicadores.financeiro.previsto_acumulado;
                 document.getElementById('val-fin-real-acum').innerText = dados.indicadores.financeiro.realizado_acumulado;
                 document.getElementById('val-fin-prev-mensal').innerText = dados.indicadores.financeiro.previsto_mensal;
                 document.getElementById('val-fin-real-mensal').innerText = dados.indicadores.financeiro.realizado_mensal;
 
-                // 3. Atualizar Texto de Avaliação
+                // Atualizar Texto de Avaliação
                 document.getElementById('texto-avaliacao').innerText = dados.avaliacao;
 
-                // 4. Renderizar Status
-                const statusContainer = document.getElementById('status-obra-container');
-                const statusSelecionado = dados.status_obra || 'no_prazo'; // Padrão se não existir no JSON
-                const config = configsStatus[statusSelecionado];
-
-                if (statusContainer && config) {
-                    statusContainer.innerHTML = `
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${config.classes}">
-                            <i data-lucide="${config.icone}" class="w-4 h-4 mr-1"></i> ${config.texto}
-                        </span>
-                    `;
-                    // Re-processa os ícones pois injetamos um "<i>" novo dinamicamente
-                    lucide.createIcons();
-                }
-
-                // 5. Renderizar o Gráfico com os arrays do JSON
-                renderizarGrafico(dados.grafico.labels, dados.grafico.fisico_previsto, dados.grafico.fisico_realizado);
-
-                // 6. Carregar Imagens do Carrossel vindas do JSON (Caso existam)
+                // Carregar Imagens do Carrossel vindas do JSON (Caso existam)
                 if (dados.imagens && dados.imagens.length > 0) {
                     listaImagens = dados.imagens;
-                } else {
-                    listaImagens = obterImagensFallback();
+                    inicializarCarrossel(listaImagens); // <-- ESTA LINHA É A SOLUÇÃO
                 }
-                inicializarCarrossel(listaImagens);
 
             } catch (erro) {
                 console.warn("Modo local ou dados.json não encontrado. Mantendo dados estáticos.", erro);
-
-                // Fallback para o status estático caso não encontre o JSON
-                const statusContainer = document.getElementById('status-obra-container');
-                if (statusContainer) {
-                    const fallbackConfig = configsStatus['atrasado'];
-                    statusContainer.innerHTML = `
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${fallbackConfig.classes}">
-                            <i data-lucide="${fallbackConfig.icone}" class="w-4 h-4 mr-1"></i> ${fallbackConfig.texto}
-                        </span>
-                    `;
-                    lucide.createIcons();
-                }
-
-                // Fallback do gráfico
-                const labels = ['Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out'];
-                const fisicoPrevisto = [10, 20, 28, 35, 40, 45];
-                const fisicoRealizado = [9, 18, 25, 34, 39, 42.5];
-                renderizarGrafico(labels, fisicoPrevisto, fisicoRealizado);
             }
         }
 
@@ -671,52 +639,6 @@
                     overlay.classList.remove('opacity-0');
                 }, 10);
             }
-        }
-
-        // Função isolada para o Chart.js
-        function renderizarGrafico(labelsJson, previstoJson, realizadoJson) {
-            const ctx = document.getElementById('desempenhoChart').getContext('2d');
-
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labelsJson,
-                    datasets: [
-                        {
-                            label: 'Físico Previsto (%)',
-                            data: previstoJson,
-                            borderColor: '#94a3b8',
-                            backgroundColor: 'rgba(148, 163, 184, 0.1)',
-                            borderDash: [5, 5],
-                            tension: 0.3,
-                            fill: true
-                        },
-                        {
-                            label: 'Físico Realizado (%)',
-                            data: realizadoJson,
-                            borderColor: '#0284c7',
-                            backgroundColor: 'rgba(2, 132, 199, 0.1)',
-                            tension: 0.3,
-                            fill: true,
-                            borderWidth: 3
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: { position: 'bottom' },
-                        tooltip: { mode: 'index', intersect: false }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
-                            ticks: { callback: function (value) { return value + '%'; } }
-                        }
-                    }
-                }
-            });
         }
 
         // Quando a página terminar de carregar, executa a função de buscar dados
