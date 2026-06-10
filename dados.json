@@ -3,17 +3,17 @@
   "_comment": "atrasado, no_prazo, adiantado",
   "status_obra": "atrasado",
   "indicadores": {
-    "fisico": {
-      "previsto_acumulado": "25.0%",
-      "realizado_acumulado": "12.88%",
-      "previsto_mensal": "5.0%",
-      "realizado_mensal": "4.8%"
+"fisico": {
+      "previsto_acumulado": "-",
+      "realizado_acumulado": "23,74%",
+      "previsto_mensal": "-",
+      "realizado_mensal": "1,02%"
     },
     "financeiro": {
-      "previsto_acumulado": "R$ 88.45M",
-      "realizado_acumulado": "R$ 11.40M",
-      "previsto_mensal": "R$ 4.4M",
-      "realizado_mensal": "R$ 4.2M"
+      "previsto_acumulado": "R$ 22.950.000,00",
+      "realizado_acumulado": "R$ 18.750.000,00",
+      "previsto_mensal": "-",
+      "realizado_mensal": "-"
     }
   },
   "grafico": {
