@@ -521,14 +521,18 @@
 
     </main>
 
-    <footer class="bg-slate-800 text-slate-400 py-6 mt-8 text-center text-sm">
-        <p>&copy; Painel de Monitoramento de Obras.</p>
-    </footer>
+    <div id="footer-placeholder"></div>
 
     <!-- Scripts de Inicialização -->
     <script>
         // Inicializa os ícones do Lucide
         lucide.createIcons();
+
+        fetch('footer.html')
+            .then(resposta => resposta.text())
+            .then(dados => {
+                document.getElementById('footer-placeholder').innerHTML = dados;
+            });
 
         // Variáveis globais do Carrossel
         let slideAtual = 0;
