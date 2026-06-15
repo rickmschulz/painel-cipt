@@ -500,9 +500,24 @@
 
         fetch('navbar.html')
             .then(resposta => resposta.text())
+            .then(html => {
+                // 1. Injeta o HTML do Navbar na página
+                document.getElementById('navbar-placeholder').innerHTML = html;
+                
+                // 2. Imediatamente após carregar o navbar, busca o JSON
+                return fetch('dados.json');
+            })
+            .then(resposta => resposta.json())
             .then(dados => {
-                document.getElementById('navbar-placeholder').innerHTML = dados;
-            });
+                // 3. Monta o texto com o dado dinâmico do JSON
+                // Assumindo que a chave no seu JSON se chame "mes_referencia"
+                const textoIndex = `Relatório de Desempenho - Referência ${dados.mes_referencia}`;
+                
+                // 4. Injeta nos IDs do Navbar
+                document.getElementById('nav-subtitle-desktop').innerText = textoIndex;
+                document.getElementById('nav-subtitle-mobile').innerText = textoIndex;
+            })
+            .catch(erro => console.error("Erro ao carregar navbar ou JSON:", erro));
 
         // Variáveis globais do Carrossel
         let slideAtual = 0;

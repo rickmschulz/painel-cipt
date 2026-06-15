@@ -31,28 +31,8 @@
 
 <body class="bg-slate-100 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
 
-    <nav class="bg-slate-900 text-white shadow-md border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center space-x-4">
-                    <a href="index.html" class="hover:opacity-90 transition-opacity flex items-center space-x-4">
-                        <img src="./assets/Brasao_Governo_500.png" alt="Brasão Governo do Espírito Santo" class="h-10 sm:h-12 w-auto object-contain">
-                        <div class="hidden md:block">
-                            <h1 class="text-lg font-bold leading-tight uppercase">Centro Integrado de Perícia Técnico-Científica do ES</h1>
-                            <p class="text-xs text-slate-300 font-medium tracking-wide mt-0.5 uppercase">Gestão à Vista</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="flex items-center flex-shrink-0 ml-4">
-                    <img src="./assets/logo-geribello-white-h-1.png" alt="Geribello Engenharia" class="h-8 sm:h-10 w-auto object-contain">
-                </div>
-            </div>
-            <div class="pb-4 md:hidden border-t border-slate-700 pt-3 mt-1">
-                <h1 class="text-sm font-bold leading-tight uppercase">Centro Integrado de Perícia Técnico-Científica do ES</h1>
-                <p class="text-xs text-slate-300 font-medium tracking-wide mt-1 uppercase">Gestão à Vista - MAIO/26</p>
-            </div>
-        </div>
-    </nav>
+    <!-- Navbar -->
+    <div id="navbar-placeholder"></div>
 
     <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 mt-6">
         <a href="index.html" class="inline-flex items-center space-x-2 text-sm font-medium text-slate-500 hover:text-brand-600 transition-colors">
@@ -130,6 +110,27 @@
     <script>
         // Inicializa os ícones do Lucide nesta página externa
         lucide.createIcons();
+
+        fetch('navbar.html')
+            .then(resposta => resposta.text())
+            .then(html => {
+                // 1. Injeta o HTML do Navbar na página
+                document.getElementById('navbar-placeholder').innerHTML = html;
+                
+                // 2. Imediatamente após carregar o navbar, busca o JSON
+                return fetch('dados.json');
+            })
+            .then(resposta => resposta.json())
+            .then(dados => {
+                // 3. Monta o texto com o dado dinâmico do JSON
+                // Assumindo que a chave no seu JSON se chame "mes_referencia"
+                const textoIndex = `Gestão à Vista - Referência ${dados.mes_referencia}`;
+                
+                // 4. Injeta nos IDs do Navbar
+                document.getElementById('nav-subtitle-desktop').innerText = textoIndex;
+                document.getElementById('nav-subtitle-mobile').innerText = textoIndex;
+            })
+            .catch(erro => console.error("Erro ao carregar navbar ou JSON:", erro));
 
         fetch('footer.html')
             .then(resposta => resposta.text())
