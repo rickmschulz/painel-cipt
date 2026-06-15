@@ -38,43 +38,7 @@
 <body class="bg-slate-100 text-slate-800 font-sans antialiased">
 
     <!-- Navbar -->
-    <nav class="bg-slate-900 text-white shadow-md border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Top bar with logos -->
-            <div class="flex items-center justify-between h-20">
-
-                <!-- Left: Brasão + Text -->
-                <div class="flex items-center space-x-4">
-                    <img src="./assets/Brasao_Governo_500.png" alt="Brasão Governo do Espírito Santo"
-                        title="Governo do Espírito Santo" class="h-10 sm:h-12 w-auto object-contain">
-
-                    <div class="hidden md:block">
-                        <h1 class="text-lg font-bold leading-tight uppercase">Centro Integrado de Perícia
-                            Técnico-Científica do ES</h1>
-                        <p class="text-xs text-slate-300 font-medium tracking-wide mt-0.5 uppercase">Relatório de
-                            Desempenho - Medição <span id="mes-ref-desktop">MAIO/26</span></p>
-                    </div>
-                </div>
-
-                <!-- Right: Logo Geribello -->
-                <div class="flex items-center flex-shrink-0 ml-4">
-                    <a href="https://www.geribello.com.br" target="_blank" rel="noopener noreferrer"
-                        class="hover:opacity-80 transition-opacity">
-                        <img src="./assets/logo-geribello-white-h-1.png" alt="Geribello Engenharia"
-                            title="Geribello Engenharia" class="h-8 sm:h-10 w-auto object-contain">
-                    </a>
-                </div>
-            </div>
-
-            <!-- Mobile title (visible only on small screens) -->
-            <div class="pb-4 md:hidden border-t border-slate-700 pt-3 mt-1">
-                <h1 class="text-sm font-bold leading-tight uppercase">Centro Integrado de Perícia Técnico-Científica do
-                    ES</h1>
-                <p class="text-xs text-slate-300 font-medium tracking-wide mt-1 uppercase">Relatório de Desempenho -
-                    Medição <span id="mes-ref-mobile">MAIO/26</span></p>
-            </div>
-        </div>
-    </nav>
+    <div id="navbar-placeholder"></div>
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
@@ -532,6 +496,12 @@
             .then(resposta => resposta.text())
             .then(dados => {
                 document.getElementById('footer-placeholder').innerHTML = dados;
+            });
+
+        fetch('navbar.html')
+            .then(resposta => resposta.text())
+            .then(dados => {
+                document.getElementById('navbar-placeholder').innerHTML = dados;
             });
 
         // Variáveis globais do Carrossel
