@@ -50,20 +50,16 @@
   },
   "imagens": [
     {
-      "url": "./assets/Foto-00.jpeg",
-      "legenda": "Concretagem da laje do 3º pavimento (Junta D)"
+      "url": "./assets/1.jpeg",
+      "legenda": "Vista Geral da Obra"
     },
     {
-      "url": "./assets/Foto-03.jpeg",
-      "legenda": "Concretagem da laje do 3º pavimento (Junta D)"
+      "url": "./assets/2.jpeg",
+      "legenda": "Vista Geral da Obra"
     },
     {
-      "url": "./assets/Foto-06.jpeg",
-      "legenda": "Concretagem da laje do 3º pavimento (Junta D)"
-    },
-    {
-      "url": "./assets/Foto-09.jpeg",
-      "legenda": "Concretagem da laje do 3º pavimento (Junta D)"
+      "url": "./assets/3.jpeg",
+      "legenda": "Vista Geral da Obra"
     }
   ]
 }
