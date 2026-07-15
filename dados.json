@@ -1,17 +1,17 @@
 {
-  "mes_referencia": "MAIO/26",
+  "mes_referencia": "JUNHO/26",
   "_comment": "atrasado, no_prazo, adiantado",
   "status_obra": "atrasado",
   "indicadores": {
 "fisico": {
       "previsto_acumulado": "-",
-      "realizado_acumulado": "23,74%",
+      "realizado_acumulado": "24,43%",
       "previsto_mensal": "-",
-      "realizado_mensal": "1,02%"
+      "realizado_mensal": "3,23%"
     },
     "financeiro": {
-      "previsto_acumulado": "R$ 22.950.000,00",
-      "realizado_acumulado": "R$ 18.750.000,00",
+      "previsto_acumulado": "R$ 26.376.755,65",
+      "realizado_acumulado": "R$ 21.608.913,54",
       "previsto_mensal": "-",
       "realizado_mensal": "-"
     }
