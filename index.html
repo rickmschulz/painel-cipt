@@ -228,38 +228,45 @@
                 <h2 class="text-md font-semibold text-slate-800">Documentos Gerenciais</h2>
             </div>
             <div class="p-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Adicionado ID "documentos-grid" para o JS identificar a lista -->
+                <div id="documentos-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                    <a href=".\assets\08-GRÁFICO DA CURVA S -RAO - FINANCEIRO - 19ª Medição_MAIO DE 2026 DA LDN.pdf" id="link-curva-s"
-                        target="_blank" rel="noopener noreferrer"
-                        class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
-                        <div
-                            class="bg-purple-100 p-3 rounded-lg text-purple-600 group-hover:scale-110 transition-transform">
+                    <!-- Doc 1 -->
+                    <a href=".\assets\08-GRÁFICO DA CURVA S -RAO - FINANCEIRO - 19ª Medição_MAIO DE 2026 DA LDN.pdf" id="link-curva-s" target="_blank" rel="noopener noreferrer" class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
+                        <div class="bg-purple-100 p-3 rounded-lg text-purple-600 group-hover:scale-110 transition-transform">
                             <i data-lucide="chart-spline" class="w-6 h-6"></i>
                         </div>
                         <div class="ml-4">
-                            <p class="font-semibold text-slate-800">Curva S</p>
+                            <p class="font-semibold text-slate-800">Curva S (Financeiro)</p>
                             <p class="text-xs text-slate-500 mt-0.5">Gráfico da Curva S (Maio/26)</p>
                         </div>
                     </a>
 
-                    <a href="gestao-a-vista.html" id="link-gestao-vista"
-                        class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
-                        <div
-                            class="bg-teal-100 p-3 rounded-lg text-teal-600 group-hover:scale-110 transition-transform">
+                    <!-- Doc 1 -->
+                    <a href=".\assets\03-CURVA DE AVANÇO FÍSICO DA OBRA_JUNHO_2026.pdf" id="link-curva-s" target="_blank" rel="noopener noreferrer" class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
+                        <div class="bg-purple-100 p-3 rounded-lg text-purple-600 group-hover:scale-110 transition-transform">
+                            <i data-lucide="chart-spline" class="w-6 h-6"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="font-semibold text-slate-800">Curva S (Físico)</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Gráfico da Curva S (Junho/26)</p>
+                        </div>
+                    </a>
+
+                    <!-- Doc 2 -->
+                    <a href="gestao-a-vista.html" id="link-gestao-vista" class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
+                        <div class="bg-teal-100 p-3 rounded-lg text-teal-600 group-hover:scale-110 transition-transform">
                             <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
                         </div>
                         <div class="ml-4">
                             <p class="font-semibold text-slate-800">Gestão à Vista</p>
-                            <p class="text-xs text-slate-500 mt-0.5">Concretagem por Pavimento<br>Percentuais por
-                                Serviços</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Concretagem por Pavimento<br>Percentuais por Serviços</p>
                         </div>
                     </a>
 
-                    <a href="linha-do-tempo.html" id="link-linha-tempo"
-                        class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
-                        <div
-                            class="bg-brand-100 p-3 rounded-lg text-brand-600 group-hover:scale-110 transition-transform">
+                    <!-- Doc 3 -->
+                    <a href="linha-do-tempo.html" id="link-linha-tempo" class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
+                        <div class="bg-brand-100 p-3 rounded-lg text-brand-600 group-hover:scale-110 transition-transform">
                             <i data-lucide="calendar-clock" class="w-6 h-6"></i>
                         </div>
                         <div class="ml-4">
@@ -268,11 +275,9 @@
                         </div>
                     </a>
 
-                    <a href="assets/04-Cronograma Físico_Nivel 2_CIPTC_junho_2026.pdf"
-                        id="link-cronograma" target="_blank" rel="noopener noreferrer"
-                        class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
-                        <div
-                            class="bg-emerald-100 p-3 rounded-lg text-emerald-600 group-hover:scale-110 transition-transform">
+                    <!-- Doc 4 -->
+                    <a href="assets/04-Cronograma Físico_Nivel 2_CIPTC_junho_2026.pdf" id="link-cronograma" target="_blank" rel="noopener noreferrer" class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
+                        <div class="bg-emerald-100 p-3 rounded-lg text-emerald-600 group-hover:scale-110 transition-transform">
                             <i data-lucide="calendar" class="w-6 h-6"></i>
                         </div>
                         <div class="ml-4">
@@ -281,9 +286,8 @@
                         </div>
                     </a>
 
-                    <a href="COLE_O_LINK_DO_DROPBOX_AQUI?dl=0" id="link-relatorio" target="_blank"
-                        rel="noopener noreferrer"
-                        class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
+                    <!-- Doc 5 -->
+                    <a href="COLE_O_LINK_DO_DROPBOX_AQUI?dl=0" id="link-relatorio" target="_blank" rel="noopener noreferrer" class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
                         <div class="bg-red-100 p-3 rounded-lg text-red-600 group-hover:scale-110 transition-transform">
                             <i data-lucide="book-open-text" class="w-6 h-6"></i>
                         </div>
@@ -293,10 +297,9 @@
                         </div>
                     </a>
 
-                    <a href="#" target="_blank" id="btn-link-evol-obra" target="_blank" rel="noopener noreferrer"
-                        class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
-                        <div
-                            class="bg-blue-100 p-3 rounded-lg text-blue-600 group-hover:scale-110 transition-transform">
+                    <!-- Doc 6 -->
+                    <a href="#" target="_blank" id="btn-link-evol-obra" rel="noopener noreferrer" class="flex items-center p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors group">
+                        <div class="bg-blue-100 p-3 rounded-lg text-blue-600 group-hover:scale-110 transition-transform">
                             <i data-lucide="camera" class="w-6 h-6"></i>
                         </div>
                         <div class="ml-4">
@@ -305,6 +308,14 @@
                         </div>
                     </a>
 
+                </div>
+
+                <!-- Botão de Expandir (Oculto por padrão, ativado pelo JS) -->
+                <div id="container-btn-docs" class="hidden mt-6 text-center border-t border-slate-100 pt-4">
+                    <button onclick="toggleDocumentos()" class="inline-flex items-center space-x-2 text-sm font-semibold text-brand-600 hover:text-brand-800 transition-colors focus:outline-none">
+                        <span id="texto-btn-docs">Ver mais documentos</span>
+                        <i data-lucide="chevron-down" id="icone-btn-docs" class="w-4 h-4"></i>
+                    </button>
                 </div>
             </div>
         </section>
@@ -524,6 +535,54 @@
         let totalSlides = 0;
         let listaImagens = [];
 
+        // Variáveis e Lógica para Expansão de Documentos
+        let docsExpandidos = false;
+
+        function inicializarDocumentos() {
+            const grid = document.getElementById('documentos-grid');
+            if (!grid) return;
+            
+            const itens = grid.children;
+            const containerBtn = document.getElementById('container-btn-docs');
+
+            // Se houver mais de 6 itens, esconde os excedentes e exibe o botão
+            if (itens.length > 6) {
+                containerBtn.classList.remove('hidden');
+                for (let i = 6; i < itens.length; i++) {
+                    itens[i].classList.add('hidden', 'doc-extra');
+                }
+            } else {
+                containerBtn.classList.add('hidden');
+            }
+        }
+
+        function toggleDocumentos() {
+            docsExpandidos = !docsExpandidos;
+            
+            const extras = document.querySelectorAll('.doc-extra');
+            const btnTexto = document.getElementById('texto-btn-docs');
+            const btnIcone = document.getElementById('icone-btn-docs');
+
+            extras.forEach(el => {
+                if (docsExpandidos) {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+
+            if (docsExpandidos) {
+                btnTexto.innerText = "Ver menos documentos";
+                btnIcone.setAttribute('data-lucide', 'chevron-up');
+            } else {
+                btnTexto.innerText = "Ver mais documentos";
+                btnIcone.setAttribute('data-lucide', 'chevron-down');
+            }
+            
+            // Re-renderiza o ícone específico que foi alterado
+            lucide.createIcons();
+        }
+        
         // Configuração de Status
         const configsStatus = {
             'atrasado': { classes: 'bg-yellow-100 text-yellow-800', icone: 'alert-circle', texto: 'Atrasado' },
@@ -786,7 +845,10 @@
         }
 
         // Quando a página terminar de carregar, executa a função de buscar dados
-        document.addEventListener('DOMContentLoaded', carregarDados);
+        document.addEventListener('DOMContentLoaded', () => {
+            carregarDados();
+            inicializarDocumentos(); // Adicione esta linha
+        });
     </script>
 </body>
 
