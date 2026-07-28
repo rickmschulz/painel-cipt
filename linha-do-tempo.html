@@ -9,25 +9,9 @@
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⏱️</text></svg>">
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
 
     <script src="https://unpkg.com/lucide@latest"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            600: '#0284c7',
-                            900: '#0c4a6e',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
 </head>
 
 <body class="bg-slate-100 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
@@ -359,36 +343,11 @@
 
     <div id="footer-placeholder"></div>
 
+    <script src="js/common.js"></script>
     <script>
-        // Inicializa os ícones do Lucide nesta página externa
-        lucide.createIcons();
-
-        fetch('navbar.html')
-            .then(resposta => resposta.text())
-            .then(html => {
-                // 1. Injeta o HTML do Navbar na página
-                document.getElementById('navbar-placeholder').innerHTML = html;
-                
-                // 2. Imediatamente após carregar o navbar, busca o JSON
-                return fetch('dados.json');
-            })
-            .then(resposta => resposta.json())
-            .then(dados => {
-                // 3. Monta o texto com o dado dinâmico do JSON
-                // Assumindo que a chave no seu JSON se chame "mes_referencia"
-                const textoIndex = `Linha do Tempo da Concretagem - Referência ${dados.mes_referencia}`;
-                
-                // 4. Injeta nos IDs do Navbar
-                document.getElementById('nav-subtitle-desktop').innerText = textoIndex;
-                document.getElementById('nav-subtitle-mobile').innerText = textoIndex;
-            })
-            .catch(erro => console.error("Erro ao carregar navbar ou JSON:", erro));
-
-        fetch('footer.html')
-            .then(resposta => resposta.text())
-            .then(dados => {
-                document.getElementById('footer-placeholder').innerHTML = dados;
-            });
+        document.addEventListener('DOMContentLoaded', () => {
+            carregarComponentesComuns('Linha do Tempo da Concretagem');
+        });
     </script>
 </body>
 
