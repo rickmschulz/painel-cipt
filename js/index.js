@@ -210,6 +210,44 @@ function formatarUrlYoutube(url) {
     return url;
 }
 
+// Funções do Modal do Mapa
+function abrirModalMapa() {
+    const modal = document.getElementById('modal-mapa');
+    const iframeOriginal = document.getElementById('mapa-iframe');
+    const iframeModal = document.getElementById('mapa-modal-iframe');
+    
+    if (modal && iframeOriginal && iframeModal) {
+        if (!iframeModal.src) {
+            iframeModal.src = iframeOriginal.src;
+        }
+        
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        
+        setTimeout(() => {
+            modal.classList.remove('opacity-0');
+            modal.classList.add('opacity-100');
+        }, 10);
+        
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function fecharModalMapa() {
+    const modal = document.getElementById('modal-mapa');
+    
+    if (modal) {
+        modal.classList.remove('opacity-100');
+        modal.classList.add('opacity-0');
+        
+        setTimeout(() => {
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }, 300);
+    }
+}
+
 // Função unificada para ativar/desativar a Tela Cheia
 function alternarTelaCheia(idElemento) {
     const iframe = document.getElementById(idElemento);
